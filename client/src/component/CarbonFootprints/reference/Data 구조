@@ -1,0 +1,111 @@
+항목
+ 전기
+  입력단위 : kwh  측정공식 : 사용량 * 0.4781
+ 가스
+  입력단위 : m³  측정공식 : 사용량 * 2.176
+ 수도
+  입력단위 : m³  측정공식 : 사용량 * 0.237
+ 교통
+  입력단위 : km 
+   휘발유 : 측정공식 : (이동거리 / 16.04) * 2.097)
+   경유 : 측정공식 : (이동거리 / 15.35) * 2.582)
+   LPG : 측정공식 : (이동거리 / 11.06) * 1.868)
+ 폐기물
+  입력단위 : L   측정공식 : (사용량 * 0.171(밀도)) * 0.5573
+  입력단위 : kg  측정공식 : 사용량 * 0.5573
+  
+  
+
+
+json type[
+    {
+        "id": 1,
+        "category_name": "electricity",
+        "label": "전기",
+        "sublabel": null,
+        "unit": "kWh",
+        "cost_formula": "0.4781",
+        "parent_category_id": null
+    },
+    {
+        "id": 2,
+        "category_name": "gas",
+        "label": "가스",
+        "sublabel": null,
+        "unit": "㎥",
+        "cost_formula": "2.176",
+        "parent_category_id": null
+    },
+    {
+        "id": 3,
+        "category_name": "water",
+        "label": "수도",
+        "sublabel": null,
+        "unit": "㎥",
+        "cost_formula": "0.237",
+        "parent_category_id": null
+    },
+    {
+        "id": 4,
+        "category_name": "transportation",
+        "label": "교통",
+        "sublabel": null,
+        "unit": "km",
+        "cost_formula": "",
+        "parent_category_id": null
+    },
+    {
+        "id": 5,
+        "category_name": "gasoline",
+        "label": null,
+        "sublabel": "휘발유",
+        "unit": "",
+        "cost_formula": "16.04 * 2.097",
+        "parent_category_id": 4
+    },
+    {
+        "id": 6,
+        "category_name": "diesel",
+        "label": null,
+        "sublabel": "경유",
+        "unit": "",
+        "cost_formula": "15.35 * 2.582",
+        "parent_category_id": 4
+    },
+    {
+        "id": 7,
+        "category_name": "lpg",
+        "label": null,
+        "sublabel": "LPG",
+        "unit": "",
+        "cost_formula": "11.06 * 1.868",
+        "parent_category_id": 4
+    },
+    {
+        "id": 8,
+        "category_name": "waste",
+        "label": "폐기물",
+        "sublabel": null,
+        "unit": "",
+        "cost_formula": "",
+        "parent_category_id": null
+    },
+    {
+        "id": 9,
+        "category_name": "kg",
+        "label": null,
+        "sublabel": "",
+        "unit": "kg",
+        "cost_formula": "0.5573",
+        "parent_category_id": 8
+    },
+    {
+        "id": 10,
+        "category_name": "l",
+        "label": null,
+        "sublabel": "",
+        "unit": "L",
+        "cost_formula": "0.171 * 0.5573",
+        "parent_category_id": 8
+    }
+]

@@ -1,0 +1,192 @@
+
+/* 로그인 회원찾기 회원가입메인 폼 */
+
+  .form {
+    margin: auto;
+    width: 300px;
+    height: 400px;
+    background-color: #51b67f;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* 로그인 CSS */
+  .form-login{
+    background-color: rgb(240, 246, 242);
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    margin:auto;
+    
+  }
+  .form-login button{
+    width: 200px;
+    height: 50px;
+    border-radius: 6px;
+    border: solid 1px rgba(0, 0, 0, .15);
+    background-color: #51b67f;
+    box-sizing: border-box;
+    color: #EEEFF1;
+  }
+  .form-login input{
+    border-radius: 5px;
+    border: none;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: solid 2px rgba(0, 0, 0, 0.15);
+  }
+  .form-login-check input{
+   margin-top: 6px;
+   margin-bottom: 8px;
+   line-height: 1.5;   
+   border: solid 2px rgba(0, 0, 0, 0.15);
+  }
+  .form-login-check label{
+    padding: 10px;
+    font-size: 15px;
+  }
+  .form-login-link a{
+    margin: 5px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration: none;
+    color: #8888 
+  }
+  .form-login-link a:hover{
+    text-decoration: underline;
+  }
+
+
+
+/* ------------회원찾기------------------- */
+
+.form-Find{
+  background-color: rgb(240, 246, 242);
+    width: 250px;
+    height: 290px;
+    border-radius: 5px;
+    margin:auto;
+}
+.form-Find input{
+  border: solid 2px rgba(0, 0, 0, 0.15);
+  margin-top: 3%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+}
+.form-Find button{
+  width: 80px;
+  height: 40px; 
+  font-size: 15px;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, .15);
+  background-color: #51b67f;
+  box-sizing: border-box;
+}
+.form-Find h1{
+  font-size: 24px;
+  padding-top: 10px;
+}
+/* -------------------회원가입----------------------------- */
+
+.form-Register{
+  background-color: rgb(240, 246, 242);
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    margin:auto;
+}
+
+
+.form-Register button{
+    width: 50px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    
+    background-color: #51b67f;
+    box-sizing: border-box;
+    color: #EEEFF1;
+}
+
+ 
+/* -------------------개인, 기업, 단체 정보 수정 회원가입 폼----------------------------- */
+ 
+.form-details{
+  margin: auto;
+  width: 300px;
+  height: 400px;
+  background-color: #51b67f;
+  border-radius: 5px;
+  text-align: left;
+  padding:20px;
+}
+
+
+
+/* -------------------정보수정----------------------------- */
+.form-details-Modify{
+  background-color: rgb(240, 246, 242);
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    margin:auto;
+}
+.form-details-Modify h2{
+  margin-left: 20%;
+}
+.form-details-Modify p{
+  padding: 3px;
+  margin: 10px;
+}
+.form-details-Modify button{
+  margin-left: 35%;
+}
+/* -------------------세부 회원가입----------------------------- */
+.form-details-category{
+  background-color: rgb(240, 246, 242);
+  padding-top: 80px;
+  width: 250px;
+  height: 350px;
+  border-radius: 5px;
+  margin:auto;
+}
+.form-details-category input{
+  width: 150px;
+  height: 23px;
+  border: solid 2px rgba(0, 0, 0, 0.15);
+  margin-top: 4.5px;
+  border-radius: 5px;
+  margin-left: 50px;
+  font-size: 12px;
+}
+.btn-check{
+  width: 40px;
+  height: 20px;
+  font-size: 15px;
+  padding: 3px;
+}
+.btn-register{
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  font-size: 15px;
+  margin-left: 34%;
+  background-color: #51b67f;
+  border-radius: 5px;
+  color: #EEEFF1;
+}
+.category-link{
+  margin-top:1px;
+  text-align: center; 
+  font-size: 15px;
+}
+
+  
+  
+
+
