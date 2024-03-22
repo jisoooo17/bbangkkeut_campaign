@@ -27,11 +27,11 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 
 const connection = mysql.createConnection({
-  host: "1.243.246.15",
-  user: "root",
+  host: "127.0.0.1",
+  user: "bbangkkeut",
   password: "1234",
-  database: "ezteam2",
-  port: 5005,
+  database: "bbangkkeut",
+  port: 3306,
 
   // host: "192.168.45.188",
   // user: "root",
