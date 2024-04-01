@@ -55,6 +55,10 @@
 ---
 
 ### 시연 영상
+#### 🌱 메인
+![main](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/main.gif)
+
+
 #### 🌱 로그인
 ![login](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/login.gif)
 
