@@ -9,7 +9,6 @@ import Footer from "../component/Footer";
 import "react-datepicker/dist/react-datepicker.css";
 
 const CampaignWrite = () => {
-  // 상호형 작성
   const storedUserData = sessionStorage.getItem("userData");
   const userData = JSON.parse(storedUserData);
 
@@ -172,6 +171,8 @@ const CampaignWrite = () => {
             }
           });
         },
+        left: 250, 
+        top: 250,
       }).open();
     }
   
