@@ -58,3 +58,8 @@
 * 로그인
 ![login](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/login.gif)
 
+* 검색
+![search](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/search.gif)
+
+* 탭 & 페이징
+![tab](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/tab.gif)
