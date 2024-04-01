@@ -1,5 +1,7 @@
-﻿# BBANGK끗 캠페인
+﻿# BBANGK끗
 <!-- * readme 작성요령: https://velog.io/@gmlstjq123/Readme.md-%ED%8C%8C%EC%9D%BC-%EC%9E%91%EC%84%B1%EB%B2%95 -->
+
+## 탄소 중립 캠페인 공유 플랫폼
 
 ### 기획 의도
 ![plan](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/intro.png)
