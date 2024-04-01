@@ -109,5 +109,5 @@
 
 ---
 #### 🌱 탄소발자국 계산기
-![carbon](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/tanso.gif)
+![carbon](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/carbon.gif)
 
