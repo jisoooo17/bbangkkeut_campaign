@@ -78,3 +78,10 @@
 
 #### 🌱 캠페인 글쓰기
 ![create](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/create.gif)
+
+
+---
+
+
+#### 🌱 캠페인 상세
+![read](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/read.gif)
