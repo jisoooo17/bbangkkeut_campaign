@@ -3,7 +3,6 @@
 
 ### 탄소 중립 캠페인 공유 플랫폼
 
---- 
 
 ### 기획 의도
 ![plan](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/intro.png)
