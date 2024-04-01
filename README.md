@@ -35,6 +35,11 @@
 
 --- 
 
+### ERD
+![ERD](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/erd.png)
+
+### URL Mapping
+![url](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/urlmapping.png)
 
 <!-- ## 확인용
 <img src="https://github.com/Sangbbgg/ezTeam2_campaign/assets/151603886/9357efe9-6554-42fb-aa41-938f9389eb33"> -->
