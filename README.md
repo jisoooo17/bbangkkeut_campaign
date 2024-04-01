@@ -55,5 +55,6 @@
 ---
 
 ### 시연 영상
-
+* 로그인
+![login](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/login.gif)
 
