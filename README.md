@@ -20,7 +20,7 @@
 ![stack](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/tech-stack.png)
 
 * React를 활용한 UI 개발
-* Node.js를 통한 서버 사이드 애플리케이션 개벌
+* Node.js를 통한 서버 사이드 애플리케이션 개발
 * JavaScript와 CSS를 사용한 인터랙션 효과 및 스타일링 작업
 * Axios를 활용한 HTTP 요청 처리
 * MySQL 서버를 활용한 데이터 전송 및 관리
@@ -38,9 +38,22 @@
 ### ERD
 ![ERD](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/erd.png)
 
+--- 
+
 ### URL Mapping
 ![url](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/urlmapping.png)
 
-<!-- ## 확인용
-<img src="https://github.com/Sangbbgg/ezTeam2_campaign/assets/151603886/9357efe9-6554-42fb-aa41-938f9389eb33"> -->
+---
+
+### 주요 기능
+1. 로그인
+2. 회원가입
+3. 캠페인 게시판 - CRUD
+4. 탄소발자국 계산기 - 데이터 시각화
+5. 마이페이지
+
+---
+
+### 시연 영상
+
 
