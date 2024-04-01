@@ -85,3 +85,17 @@
 
 #### 🌱 캠페인 상세
 ![read](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/read.gif)
+
+
+---
+
+
+#### 🌱 캠페인 수정
+![update](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/update.gif)
+
+
+---
+
+
+#### 🌱 캠페인 삭제
+![delete](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/delete.gif)
