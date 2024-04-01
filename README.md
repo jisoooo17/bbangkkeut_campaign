@@ -108,12 +108,18 @@
 
 
 ---
-#### 🌱 탄소발자국 계산기
+#### 🌱 탄소발자국 계산기 - 계산하기
 ![carbon](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/carbon.gif)
 
 
 
 ---
-#### 🌱 탄소발자국 계산기 - 결과
+#### 🌱 탄소발자국 계산기 - 결과보기
 ![carbon-result](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/carbon-result.gif)
+
+
+
+--- 
+#### 마이페이지
+![mypage](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/mypage.gif)
 
