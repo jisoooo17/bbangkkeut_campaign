@@ -14,7 +14,7 @@ import MemoryStore from "memorystore"; // MemoryStore import 추가
 const MemoryStoreInstance = MemoryStore(session);
 
 import { fileURLToPath } from "url";
-import { rejects } from "assert";
+// import { rejects } from "assert";
 
 const app = express();
 const port = 8000;
@@ -46,12 +46,6 @@ const connection = mysql.createConnection({
   password: "1234",
   database: "bbangkkeut",
   port: 3306,
-
-  // host: "192.168.45.188",
-  // user: "root",
-  // password: "1234",
-  // database: "ezteam2",
-  // port: 5005,
 });
 
 // MySQL 연결
