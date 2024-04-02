@@ -30,7 +30,7 @@ const Comments = ({ curList }) => {
           setLoadedComments(addComments); // 댓글 수정 시 불러올 데이터 저장
         }
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   }, [dispatch, id]);
 
   // 사용자 정보를 가져오는 함수
@@ -88,7 +88,6 @@ const Comments = ({ curList }) => {
   // 댓글 삭제 버튼
   const deleteComment = async (commentId) => {
     const confirmDelete = window.confirm("댓글을 삭제하시겠습니까?");
-    console.log(curList.id, commentId); 
 
     if (confirmDelete) {
       try {
@@ -97,9 +96,8 @@ const Comments = ({ curList }) => {
 
         // comment.id가 commentId와 같지 않은 댓글만 새로운 배열에 포함시키고, 삭제할 댓글은 제외시킴
         setComments((prev) => prev.filter(comment => comment.id !== commentId))
-        
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     }
   };
@@ -154,16 +152,3 @@ const Comments = ({ curList }) => {
 };
 
 export default Comments;
-
-
-
-
-// comments 테이블:
-
-// id: 댓글을 고유하게 식별하는 자동 증가하는 정수형 열
-// post_id: 댓글이 속한 게시물의 ID를 저장하는 정수형 외래 키 열입니다. 이 열은 posts 테이블의 id 열을 참조
-// userid: 댓글을 작성한 사용자를 식별하는 정수형 외래 키 열입니다. 이 열은 authors 테이블의 사용자 ID를 참조
-// comment_text: 댓글의 내용을 저장하는 텍스트 열입니다.
-// date: 댓글이 작성된 날짜 및 시간을 저장하는 열입니다. 기본값으로 현재 시간이 설정되며, NULL을 허용
-// PRIMARY KEY: id 열을 기본 키로 지정하여 각 레코드를 고유하게 식별
-// INDEX 및 CONSTRAINT: post_id 및 userid 열에는 각각 외래 키 제약 조건이 정의되어 있습니다. 이러한 제약 조건은 데이터 무결성을 유지하고 참조 무결성을 보장
