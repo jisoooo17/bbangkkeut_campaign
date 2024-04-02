@@ -27,6 +27,16 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
 
   const hasResultData = resultData && resultData.calculation_month;
 
+  // console.log("??", hasResultData);
+  // console.log("유저 결과 :", userData);
+  // console.log("추천 실천과제 :", initialData);
+  // console.log("resultData :", resultData);
+  // console.log("targetEmissions :", targetEmissions.transportation);
+  // console.log("교통 라디오 옵션(차량없음) :", isTransportationOption);
+  // console.log("barChatData :", barChatData);
+  // console.log("barChatDataTotal :", categorySavings);
+  // const userId = 104716;
+
   // resultData.total(유저) / categorySavings.total(목표) / averageData.total(평균) 데이터셋 작성 -> targetBarChart작성
 
   const averageData = {
@@ -108,18 +118,20 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
       return acc;
     }, {});
 
+    // console.log("Updated Target Emissions: ", updatedTargetEmissions);
+
     setTargetEmission(updatedTargetEmissions);
   }, [categorySavings]);
 
   function transformDataToBarChart(categorySavings) {
-    // 카테고리 키를 배열로 변환
+    // 카테고리 키를 배열로 변환합니다.
     const categoryKeys = Object.keys(categorySavings);
 
-    // 결과 배열을 생성
+    // 결과 배열을 생성합니다.
     const barChartDataTotal = categoryKeys
       .map((key, index) => {
-        // 카테고리에 해당하는 레이블과 색상을 가져옴
-        // total 키는 제외
+        // 카테고리에 해당하는 레이블과 색상을 가져옵니다.
+        // total 키는 제외합니다.
         if (key !== "total") {
           return {
             name: labels[key], // 레이블을 이름으로 사용
@@ -129,7 +141,7 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
           };
         }
       })
-      .filter((item) => item !== undefined); // total 키로 생성된 undefined 값을 제거
+      .filter((item) => item !== undefined); // total 키로 생성된 undefined 값을 제거합니다.
 
     return barChartDataTotal;
   }
@@ -211,10 +223,11 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
       alert("데이터 저장에 실패했습니다.");
     }
 
+    // 부드럽게 페이지 상단으로 스크롤
     window.scrollTo({
-      top: 0, 
-      left: 0, 
-      behavior: "smooth", 
+      top: 0, // Y 좌표
+      left: 0, // X 좌표
+      behavior: "smooth", // 부드러운 스크롤 효과
     });
   };
 
@@ -262,6 +275,8 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
   function calculateTargetEmissions(resultData, categorySavings, category) {
     return Math.max(0, resultData[category] - categorySavings[category]).toFixed(1);
   }
+
+  // console.log("barChatData", barChatData);
 
   // 평균보다 입력데이터가 높은 항목의 개수를 계산하는 함수
   function countHigherItems(resultData, averageData) {
@@ -530,6 +545,8 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
                             <span className={`forest_${data.category}_text`}>{data.name}</span>
                           </div>
                         ))}
+                        {/* {console.log("barChatData :",barChatData)}
+                        {console.log("barChartDataTotal :",barChartDataTotal)} */}
                       </div>
                       <div className="total_chart">
                         <TargetBarchartTotal barChartDataTotal={barChartDataTotal} />

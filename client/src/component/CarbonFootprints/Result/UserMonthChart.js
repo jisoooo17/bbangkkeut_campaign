@@ -409,7 +409,7 @@ function UserMonthChart() {
             const currentValue = previousMonthchartData[index].value;
             const maxValaue = Math.max(previousValue, currentValue);
             const minValaue = Math.min(previousValue, currentValue);
-            const savings = parseFloat((currentValue - previousValue).toFixed(1));
+            const savings = parseFloat((previousValue - currentValue).toFixed(1));
             return { ...entry, value: savings, maxValaue: maxValaue, minValaue: minValaue };
           });
           setCategorySavings(updatedCategorySavings);
@@ -454,7 +454,7 @@ function UserMonthChart() {
   };
 
   // 콘솔 확인
-  // console.log("userId:", userData.userid);
+  console.log("userId:", userData.userid);
   // console.log("초기 mypageInitialData: ", mypageInitialData);
   // console.log("초기 calculationAdviceData: ", calculationAdviceData);
   // console.log("resultDataSet :", resultDataSet);

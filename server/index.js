@@ -27,11 +27,11 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 
 const connection = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "bbangkkeut",
+  host: "1.243.246.15",
+  user: "root",
   password: "1234",
-  database: "bbangkkeut",
-  port: 3306,
+  database: "ezteam2",
+  port: 5005,
 
   // host: "192.168.45.188",
   // user: "root",
@@ -169,7 +169,7 @@ app.get("/users", (req, res) => {
       console.error("Error executing MySQL query:", err);
       return res.json(err);
     }
-    console.log(res);
+    // console.log(res);
     return res.json(data);
   });
 });
@@ -291,9 +291,6 @@ app.delete("/campaign/detail/:id/comments/:commentId", (req, res) => {
 app.get("/campaign/detail/:id/comments/:commentId", (req, res) => {
   const postId = req.params.id;
   const commentId = req.params.commentId;
-  console.log(postId);
-  console.log(commentId);
-
   const q = "SELECT * FROM campaign_comments WHERE post_id = ? AND id = ?";
 
   connection.query(q, [postId, commentId], (err, data) => {
@@ -304,46 +301,10 @@ app.get("/campaign/detail/:id/comments/:commentId", (req, res) => {
     const selectedComment = data[0]; // 첫 번째로 선택된 댓글을 가져옴
     return res.status(200).json({ message: "test", selectedComment });
   });
-
-  console.log(commentId); // 올바른 위치에 console.log(commentId);를 이동
 });
-
 // -------------- 댓글 --------------
 
 // -------------- 이미지 저장 관련 --------------
-// multer 설정
-// const upload = multer({
-//   storage: multer.diskStorage({
-//     // 저장할 장소
-//     destination(req, file, cb) {
-//       cb(null, path.join(__dirname, "public/uploads"))
-//     },
-//     // 저장할 이미지의 파일명
-//     filename(req, file, cb) {
-//       const ext = path.extname(file.originalname); // 파일의 확장자
-//       console.log('file.originalname', file.originalname);
-//       // 파일명이 절대 겹치지 않도록 해줘야한다.
-//       // 파일이름 + 현재시간밀리초 + 파일확장자명
-//       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
-//     },
-//   }),
-//   // limits: { fileSize: 5 * 1024 * 1024 } // 파일 크기 제한
-// });
-
-// // 하나의 이미지 파일만 가져온다.
-// app.post('/img', upload.single('img'), (req, res) => {
-//   // 해당 라우터가 정상적으로 작동하면 public/uploads에 이미지가 업로드된다.
-//   // 업로드된 이미지의 URL 경로를 프론트엔드로 반환한다.
-//   console.log('전달받은 파일', req.file);
-//   console.log('저장된 파일의 이름', req.file.filename);
-
-//   // 파일이 저장된 경로를 클라이언트에게 반환해준다.
-//   const IMG_URL = `http://localhost:8000/uploads/${req.file.filename}`;
-//   console.log(IMG_URL);
-//   res.json({ url: IMG_URL });
-// });
-
-// multer 설정
 // multer 설정
 const upload = multer({
   storage: multer.diskStorage({
@@ -359,11 +320,9 @@ const upload = multer({
 
 // 하나의 이미지 파일만 가져온다.
 app.post("/img", upload.single("img"), (req, res) => {
-  console.log(req.file); // 이미지 파일 정보 확인
   const IMG_URL = `http://localhost:8000/uploads/${req.file.filename}`;
   res.json({ url: IMG_URL });
 });
-
 // -------------- 이미지 저장 관련 --------------
 
 
@@ -476,7 +435,7 @@ app.get("/api/carbonFootprint/check/:userId/:date", async (req, res) => {
   const lastDay = endDate.getDate();
   const endDateStr = `${yearMonth}-${lastDay}`;
 
-  console.log(`Checking data for user ${userId} between ${startDate} and ${endDateStr}`);
+  // console.log(`Checking data for user ${userId} between ${startDate} and ${endDateStr}`);
 
   try {
     const query = `
@@ -485,8 +444,8 @@ app.get("/api/carbonFootprint/check/:userId/:date", async (req, res) => {
         AND calculation_month BETWEEN ? AND ?;
       `;
 
-    console.log(`Executing query: ${query}`);
-    console.log(`With parameters: userId=${userId}, startDate=${startDate}, endDateStr=${endDateStr}`);
+    // console.log(`Executing query: ${query}`);
+    // console.log(`With parameters: userId=${userId}, startDate=${startDate}, endDateStr=${endDateStr}`);
 
     connection.query(query, [userId, startDate, endDateStr], (err, results) => {
       if (err) {
@@ -495,10 +454,10 @@ app.get("/api/carbonFootprint/check/:userId/:date", async (req, res) => {
       }
 
       if (results.length > 0) {
-        console.log(`Found data for user ${userId} in the specified month.`);
+        // console.log(`Found data for user ${userId} in the specified month.`);
         res.json({ hasData: true, data: results[0] });
       } else {
-        console.log(`No data found for user ${userId} in the specified month.`);
+        // console.log(`No data found for user ${userId} in the specified month.`);
         res.json({ hasData: false });
       }
     });
@@ -740,7 +699,7 @@ app.use(
 //-------------------------------로그인------------------------------------
 
 app.post("/login", async (req, res) => {
-  console.log(req.session);
+  // console.log(req.session);
   const { email, password, usertype } = req.body; //usertype 추가 2/14 김민호
 
   try {
@@ -760,7 +719,7 @@ app.post("/login", async (req, res) => {
             //세션데이터 저장(새로운 데이터 추가시 이부분 수정)
             req.session.usertype = result[0].usertype; //0213 김민호 익스플로우 세션기능 추가
             req.session.userid = result[0].userid; //0213 김민호 익스플로우 세션기능 추가
-            console.log(req.session);
+            // console.log(req.session);
             res.send({ success: true, message: "로그인 성공", data: result });
           } else {
             res.send({
@@ -936,7 +895,7 @@ app.post("/register", async (req, res) => {
         });
       }
       // 회원가입이 성공한 경우 응답을 클라이언트에게 보냅니다.
-      console.log("사용자가 성공적으로 등록됨");
+      // console.log("사용자가 성공적으로 등록됨");
       return res.status(200).json({
         success: true,
         message: "사용자가 성공적으로 등록됨",
@@ -998,7 +957,7 @@ app.delete("/delete-account/:userId/:userType", (req, res) => {
       console.error("주문 테이블 업데이트 오류:", updateError);
       res.status(500).json({ success: false, message: "주문 테이블 업데이트 오류" });
     } else {
-      console.log("주문 테이블이 성공적으로 업데이트되었습니다");
+      // console.log("주문 테이블이 성공적으로 업데이트되었습니다");
 
       // 사용자 테이블에서 사용자를 삭제합니다.
       const deleteQuery = `DELETE FROM ${tableName} WHERE userid = ?`;
@@ -1008,7 +967,7 @@ app.delete("/delete-account/:userId/:userType", (req, res) => {
           console.error("사용자 삭제 오류:", error);
           res.status(500).json({ success: false, message: "사용자 삭제 오류" });
         } else {
-          console.log("사용자가 성공적으로 삭제되었습니다");
+          // console.log("사용자가 성공적으로 삭제되었습니다");
 
           if (tableName === "user") {
             const deleteCommentsQuery = `DELETE FROM campaign_comments WHERE userid = ?`;
@@ -1016,7 +975,7 @@ app.delete("/delete-account/:userId/:userType", (req, res) => {
               if (commentsError) {
                 console.error("관련 댓글 삭제 오류:", commentsError);
               } else {
-                console.log("관련 댓글이 성공적으로 삭제되었습니다");
+                // console.log("관련 댓글이 성공적으로 삭제되었습니다");
               }
             });
           }

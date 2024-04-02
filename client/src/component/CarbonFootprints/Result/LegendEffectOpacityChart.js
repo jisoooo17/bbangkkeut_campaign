@@ -29,6 +29,7 @@ const Example = () => {
         const response = await fetch(`http://localhost:8000/api/carbonFootprint/main`);
         const data = await response.json();
         setMainInitialData(data); // 초기 데이터 상태 업데이트
+        // console.log(data);
       } catch (error) {
         console.error("Error fetching initial data:", error);
       }
@@ -58,6 +59,26 @@ const Example = () => {
     폐기물: "#5CD1A6",
     total: "#F4DD7C",
   };
+
+  // ################################################################################################################### user data set (consol.log)
+  // console.log("mainInitialData", mainInitialData);
+  // ################################################################################################################### 평균 data set (consol.log)
+  // console.log("averageData", averageData);
+
+  // user data 변경 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  // 조건 : 1)년도는 1개년도 고정, 2)항목(5개)별 평균값
+
+  // 변경 data-----------------
+  // const data = [
+  //   {
+  //     currentMonth: mainInitialData.calculation_month의 월만
+  //     name: labels의 값,
+  //     user: labels별 mainInitialData의 평균,
+  //     average: labels별 averageData 값,
+  //     usertotal: mainInitialData.total의 평균,
+  //     averagetotal: averageData.total값,
+  //   }];
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
   // 함수작성 부분
   const transformData = (mainInitialData) => {
@@ -120,9 +141,14 @@ const Example = () => {
 
   const transformedData = transformData(mainInitialData).transformed;
   const uniqueMonthsData = transformData(mainInitialData).months;
+  // ################################################################################################################### chart데이터 및 user데이터 월단위 fillter (consol.log)
+  // console.log("transformedData", transformedData);
+  // console.log("uniqueMonthsData", uniqueMonthsData);
 
   // 변환된 데이터를 현재 선택된 월에 따라 필터링
   const filteredData = transformedData.filter((data) => data.currentMonth === selectedMonth);
+  // ################################################################################################################### chart데이터 월단위 분할 (consol.log)
+  // console.log("filteredData", filteredData);
 
   const CustomTick = (props) => {
     const { x, y, payload } = props;
@@ -140,14 +166,14 @@ const Example = () => {
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
-      // payload[0]는 현재 호버링되고 있는 데이터 포인트의 정보를 담고 있음
-      const data = payload[0].payload; // 툴팁에 표시될 전체 데이터 객체를 가져옴
+      // payload[0]는 현재 호버링되고 있는 데이터 포인트의 정보를 담고 있습니다.
+      const data = payload[0].payload; // 툴팁에 표시될 전체 데이터 객체를 가져옵니다.
 
-      // 데이터 객체에서 name, average, user 값을 추출
+      // 데이터 객체에서 name, average, user 값을 추출합니다.
       const { name, average, user } = data;
 
-      // 색상은 name을 키로 사용하여 colors 객체에서 동적으로 결정
-      const color = colors[name] || "#000"; // 기본값으로 검정색을 설정
+      // 색상은 name을 키로 사용하여 colors 객체에서 동적으로 결정합니다.
+      const color = colors[name] || "#000"; // 기본값으로 검정색을 설정합니다.
 
       return (
         <div
@@ -178,9 +204,9 @@ const Example = () => {
     } else {
       navigate("/carbonFootprint");
       window.scrollTo({
-        top: 0, 
-        left: 0, 
-        behavior: "smooth",
+        top: 0, // Y 좌표
+        left: 0, // X 좌표
+        behavior: "smooth", // 부드러운 스크롤 효과
       });
     }
   };
