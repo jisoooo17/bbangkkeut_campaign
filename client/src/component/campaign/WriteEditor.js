@@ -8,11 +8,10 @@ const WriteEditor = ({ value, handleChangeQuill }) => {
 
   // 이미지 처리를 하는 핸들러
   const imageHandler = () => {
-    console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
-
     // 1. 이미지를 저장할 input type=file DOM을 만듦
     const input = document.createElement('input');
-    // 속성 써주기
+
+    // 속성 
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.click(); // 에디터 이미지버튼을 클릭하면 이 input이 클릭됨
@@ -27,9 +26,7 @@ const WriteEditor = ({ value, handleChangeQuill }) => {
       // 백엔드 multer라우터에 이미지를 보냄
       try {
         const result = await axios.post('http://localhost:8000/img', formData);
-        console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
         const IMG_URL = result.data.url;
-        console.log(IMG_URL)
         // 이 URL을 img 태그의 src에 넣은 요소를 현재 에디터의 커서에 넣어주면 에디터 내에서 이미지가 나타남
         // src가 base64가 아닌 짧은 URL이기 때문에 데이터베이스에 에디터의 전체 글 내용을 저장할 수 있게됨
         // 이미지는 꼭 로컬 백엔드 uploads 폴더가 아닌 다른 곳에 저장해 URL로 사용
@@ -39,12 +36,14 @@ const WriteEditor = ({ value, handleChangeQuill }) => {
         // 1. 에디터 root의 innerHTML을 수정해주기
         // editor의 root는 에디터 컨텐츠들이 담겨있다. 거기에 img태그를 추가해
         // 이미지를 업로드하면 -> 멀터에서 이미지 경로 URL을 받아와 -> 이미지 요소로 만들어 에디터 안에 넣어준다.
+
         // 2. 현재 에디터 커서 위치값을 가져옴
         const range = editor.getSelection();
+        
         // 가져온 위치에 이미지를 삽입
         editor.insertEmbed(range.index, 'image', IMG_URL);
       } catch (error) {
-        console.log('실패했어요ㅠ');
+        console.log(error);
       }
     });
   };

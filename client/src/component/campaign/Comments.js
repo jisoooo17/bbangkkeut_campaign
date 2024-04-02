@@ -77,7 +77,7 @@ const Comments = ({ curList }) => {
           setNewComment("");
           setComments(prev => [newCommentData, ...prev]);
         } else {
-          console.log("User information is not available.");
+          console.log("사용자 정보 없음");
         }
       } catch (error) {
         console.log(error);
