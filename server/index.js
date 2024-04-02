@@ -514,7 +514,7 @@ app.get("/api/carbonFootprint/mypage/:userId", async (req, res) => {
   // 첫 번째 쿼리: carbon_footprint에서 user 월별 데이터 가져오기
   const mypageInitial = new Promise((resolve, reject) =>{
     const query = `
-    SELECT * FROM ezteam2.user_calculation
+    SELECT * FROM bbangkkeut.user_calculation
     WHERE user_id = ?;`
     connection.query(query,[userId],(err, results) =>{
       if (err) reject(err);
