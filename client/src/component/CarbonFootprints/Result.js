@@ -263,8 +263,6 @@ function Result({ initialData, resultData, userData, isTransportationOption, onS
     return Math.max(0, resultData[category] - categorySavings[category]).toFixed(1);
   }
 
-  // console.log("barChatData", barChatData);
-
   // 평균보다 입력데이터가 높은 항목의 개수를 계산하는 함수
   function countHigherItems(resultData, averageData) {
     // 키 값들을 배열로 변환
