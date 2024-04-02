@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 function Consumption({ inputData, initialData, onResultSubmit }) {
-  // console.log("계산공식 :", initialData);
   const [inputValue, setInputValue] = useState(inputData); // 예시 입력 값
   const [co2Emission, setCo2Emission] = useState({
     electricity: 0,
@@ -53,8 +52,8 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
 
   // Result Data전달
   const handleSubmit = () => {
-    // `transportation`이 4항목 (예: "추가 옵션") 선택된 경우를 처리합니다.
-    const isTransportationOption = inputValue.radioOption === "3"; // 여기서는 "3"이 4번째 옵션을 의미합니다.
+    // `transportation`이 4항목 (예: "추가 옵션") 선택된 경우를 처리
+    const isTransportationOption = inputValue.radioOption === "3"; // 여기서는 "3"이 4번째 옵션을 의미
 
     // `transportation` 제외한 나머지 값들의 유효성 검사
     const isValidEmissionExcludingTransportation = Object.entries(co2Emission).every(([key, value]) => {
@@ -75,11 +74,10 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
     const resultData = co2Emission; // 계산된 결과 데이터
     onResultSubmit(resultData, inputValue, isTransportationOption);
 
-    // 부드럽게 페이지 상단으로 스크롤
     window.scrollTo({
-      top: 0, // Y 좌표
-      left: 0, // X 좌표
-      behavior: "smooth", // 부드러운 스크롤 효과
+      top: 0,
+      left: 0, 
+      behavior: "smooth", 
     });
   };
 
@@ -111,7 +109,6 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
   // 입력값 계산 로직
   useEffect(() => {
     const handleData = inputValue;
-    // console.log("userInputValue :",inputValue);
 
     const getCostFormula = (costObj, key) => Object.values(costObj)[key] ?? "0";
 
@@ -193,7 +190,6 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
                       <p>승용차 종류</p>
                     </div>
                     <div className="radioBox">
-                      {/* 이 div가 모든 라디오 버튼들을 감싸는 컨테이너 역할을 합니다. */}
                       {transportationOptions.map((option, idx) => (
                         <div key={option.id}>
                           <input
