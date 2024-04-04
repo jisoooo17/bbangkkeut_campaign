@@ -136,6 +136,6 @@
 
 
 --- 
-#### 마이페이지
+#### 🌱 마이페이지
 ![mypage](https://github.com/jisoooo17/bbangkkeut_campaign/blob/main/asset/mypage.gif)
 
