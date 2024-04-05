@@ -50,8 +50,8 @@ const connection = mysql.createConnection({
 });
 
 // MySQL 연결
-connection.connect((err) => {
-  if (err) {
+connection.connect((error) => {
+  if (error) {
     console.error("Error connecting to MySQL: " + err.stack);
     return;
   }
@@ -74,9 +74,9 @@ app.get("/campaign", (req, res) => {
   // FROM campaign_posts a
   // INNER JOIN user u ON a.userid = u.userid;`;
   connection.query(q, (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.json(err);
+    if (error) {
+      console.error(error);
+      return res.json(error);
     }
     return res.json(data);
   });
@@ -105,7 +105,7 @@ app.post("/campaign", (req, res) => {
   const values = [req.body.title, req.body.body, req.body.userid, formattedStartDate, formattedEndDate, formattedReceptionStartDate, formattedReceptionEndDate, req.body.address, req.body.address_detail, req.body.latitude, req.body.longitude];
 
   connection.query(q, values, (err, data) => {
-    if (err) return res.json(err);
+    if (error) return res.json(error);
     return res.json("Message has been sent successfully");
   });
 });
@@ -120,16 +120,16 @@ app.delete("/campaign/detail/:id", (req, res) => {
 
   // 댓글 먼저 삭제
   connection.query(qDeleteComments, campaignId, (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json(err);
+    if (error) {
+      console.error(error);
+      return res.status(500).json(error);
     }
 
     // 댓글 삭제가 성공하면 게시물 삭제
     connection.query(qDeletePost, campaignId, (err, data) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json(err);
+      if (error) {
+        console.error(error);
+        return res.status(500).json(error);
       }
       return res.json("Message and comments have been deleted successfully");
     });
@@ -141,7 +141,7 @@ app.get("/campaign/detail/:id", (req, res) => {
   const campaignId = req.params.id;
   const q = "SELECT * FROM campaign_posts WHERE id = ?";
   connection.query(q, campaignId, (err, data) => {
-    if (err) return res.status(500).json(err);
+    if (error) return res.status(500).json(error);
     if (data.length === 0) return res.status(404).json({ message: "글을 찾을 수 없습니다." });
     return res.json(data[0]);
   });
@@ -165,7 +165,7 @@ app.put("/campaign/edit/:id", (req, res) => {
     campaignId,
   ];
   connection.query(q, values, (err, data) => {
-    if (err) return res.status(500).json(err);
+    if (error) return res.status(500).json(error);
     return res.json("Message has been updated successfully");
   });
 });
@@ -174,11 +174,10 @@ app.put("/campaign/edit/:id", (req, res) => {
 app.get("/users", (req, res) => {
   const q = "SELECT userid, username, email, phonenumber FROM user";
   connection.query(q, (err, data) => {
-    if (err) {
-      console.error("Error executing MySQL query:", err);
-      return res.json(err);
+    if (error) {
+      console.error("Error executing MySQL query:", error);
+      return res.json(error);
     }
-    // console.log(res);
     return res.json(data);
   });
 });
@@ -190,9 +189,9 @@ app.put("/campaign/increase-views/:id", (req, res) => {
 
   // 조회수 증가
   connection.query(qUpdateViews, campaignId, (err, result) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json(err);
+    if (error) {
+      console.error(error);
+      return res.status(500).json(error);
     }
     // 조회수가 업데이트된 후 응답
     return res.json({ message: "Views updated successfully" });
@@ -209,8 +208,8 @@ app.post("/campaign/form/:id", (req, res) => {
   const q = 'INSERT INTO campaign_form (userid, company, memo, post_id) VALUES (?, ?, ?, ?)';
   
   connection.query(q, values, (err, data) => {
-    if (err) {
-      console.error("Error inserting data:", err);
+    if (error) {
+      console.error("Error inserting data:", error);
       return res.status(500).json({ error: "Failed to submit the form." });
     }
     return res.json({ message: "Message has been sent successfully" });
@@ -230,7 +229,7 @@ app.get("/campaign/form/:id", (req, res) => {
   //   WHERE cc.post_id = ?`;
   
   connection.query(q, [postId], (err, data) => { 
-    if(err) return res.status(500).json(err);
+    if(error) return res.status(500).json(error);
     return res.status(200).json(data); 
   });
 });
@@ -251,9 +250,9 @@ app.post("/campaign/detail/:id/comments", (req, res) => {
   const q = "INSERT INTO campaign_comments (post_id, userid, comment_text, date) VALUES (?, ?, ?, NOW())";
 
   connection.query(q, values, (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json(err);
+    if (error) {
+      console.error(error);
+      return res.status(500).json(error);
     }
     // 새로 추가된 댓글의 commentId를 응답 데이터에 추가하여 전송
     const commentId = data.insertId;
@@ -275,7 +274,7 @@ app.get("/campaign/detail/:id/comments", (req, res) => {
     WHERE cc.post_id = ?`;
 
   connection.query(q, [postId], (err, data) => {
-    if (err) return res.status(500).json(err);
+    if (error) return res.status(500).json(error);
     return res.status(200).json(data); // 댓글 데이터를 반환합니다.
   });
 });
@@ -288,9 +287,9 @@ app.delete("/campaign/detail/:id/comments/:commentId", (req, res) => {
   const q = "DELETE FROM campaign_comments WHERE post_id = ? AND id = ?";
 
   connection.query(q, [postId, commentId], (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json(err);
+    if (error) {
+      console.error(error);
+      return res.status(500).json(error);
     }
     return res.status(200).json({ message: "댓글이 성공적으로 삭제되었습니다." });
   });
@@ -303,9 +302,9 @@ app.get("/campaign/detail/:id/comments/:commentId", (req, res) => {
   const q = "SELECT * FROM campaign_comments WHERE post_id = ? AND id = ?";
 
   connection.query(q, [postId, commentId], (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json(err);
+    if (error) {
+      console.error(error);
+      return res.status(500).json(error);
     }
     const selectedComment = data[0]; // 첫 번째로 선택된 댓글을 가져옴
     return res.status(200).json({ message: "test", selectedComment });
@@ -409,7 +408,7 @@ app.get("/api/carbonFootprint", async (req, res) => {
   // 첫 번째 쿼리: carbon_footprint에서 데이터 가져오기
   const carbonFootprint = new Promise((resolve, reject) => {
     connection.query("SELECT * FROM carbon_footprint;", (err, results) => {
-      if (err) reject(err);
+      if (error) reject(error);
       else resolve(results);
     });
   });
@@ -418,7 +417,7 @@ app.get("/api/carbonFootprint", async (req, res) => {
   // 두 번째 쿼리: calculation_advice에서 데이터 가져오기
   const calculationAdvice = new Promise((resolve, reject) => {
     connection.query("SELECT a.name, b.advice_text, b.savings_value FROM calculation_category as a join calculation_advice as b ON a.id = b.category_id;", (err, results) => {
-      if (err) reject(err);
+      if (error) reject(error);
       else resolve(results);
     });
   });
@@ -444,7 +443,6 @@ app.get("/api/carbonFootprint/check/:userId/:date", async (req, res) => {
   const lastDay = endDate.getDate();
   const endDateStr = `${yearMonth}-${lastDay}`;
 
-  // console.log(`Checking data for user ${userId} between ${startDate} and ${endDateStr}`);
 
   try {
     const query = `
@@ -453,20 +451,15 @@ app.get("/api/carbonFootprint/check/:userId/:date", async (req, res) => {
         AND calculation_month BETWEEN ? AND ?;
       `;
 
-    // console.log(`Executing query: ${query}`);
-    // console.log(`With parameters: userId=${userId}, startDate=${startDate}, endDateStr=${endDateStr}`);
-
     connection.query(query, [userId, startDate, endDateStr], (err, results) => {
-      if (err) {
-        console.error("Query error:", err);
+      if (error) {
+        console.error("Query error:", error);
         return res.status(500).send("Error querying the database");
       }
 
       if (results.length > 0) {
-        // console.log(`Found data for user ${userId} in the specified month.`);
         res.json({ hasData: true, data: results[0] });
       } else {
-        // console.log(`No data found for user ${userId} in the specified month.`);
         res.json({ hasData: false });
       }
     });
@@ -481,7 +474,7 @@ app.get("/api/carbonFootprint/main", async (req, res) => {
   try {
     const query = `SELECT * FROM user_calculation;`
     connection.query(query,(err, results) =>{
-      if (err) reject(err);
+      if (error) reject(error);
       else return res.json(results);
     });
   } catch (error) {
@@ -499,7 +492,7 @@ app.get("/api/carbonFootprint/mypage/:userId", async (req, res) => {
   //   SELECT * FROM ezteam2.user_calculation
   //   WHERE user_id = ?;`
   //   connection.query(query,[userId],(err, results) =>{
-  //     if (err) reject(err);
+  //     if (error) reject(error);
   //     else return res.json(results);
   //   });
   // } catch (error) {
@@ -512,7 +505,7 @@ app.get("/api/carbonFootprint/mypage/:userId", async (req, res) => {
     SELECT * FROM bbangkkeut.user_calculation
     WHERE user_id = ?;`
     connection.query(query,[userId],(err, results) =>{
-      if (err) reject(err);
+      if (error) reject(error);
       else resolve(results);
     })
   });    
@@ -521,7 +514,7 @@ app.get("/api/carbonFootprint/mypage/:userId", async (req, res) => {
   // 두 번째 쿼리: calculation_advice에서 데이터 가져오기
   const calculationAdvice = new Promise((resolve, reject) => {
     connection.query("SELECT a.name, b.advice_text, b.savings_value FROM calculation_category as a join calculation_advice as b ON a.id = b.category_id;", (err, results) => {
-      if (err) reject(err);
+      if (error) reject(error);
       else resolve(results);
     });
   });
@@ -547,8 +540,8 @@ app.post("/api/carbonFootprint", async (req, res) => {
     "INSERT INTO user_calculation (user_id, calculation_month, electricity, gas, water, transportation, waste, total, checked_items, category_savings) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
   connection.query(insertQuery, [userId, calculationMonth, electricity, gas, water, transportation, waste, total, checkedItemsString, categorySavingsString], (err, results) => {
-    if (err) {
-      console.error(err);
+    if (error) {
+      console.error(error);
       return res.status(500).send({ message: "Error saving data to the database", error: err.message });
     }
     res.status(201).send({ message: "Data saved successfully", data: req.body });
@@ -708,14 +701,13 @@ app.use(
 //-------------------------------로그인------------------------------------
 
 app.post("/login", async (req, res) => {
-  // console.log(req.session);
   const { email, password, usertype } = req.body; //usertype 추가 2/14 김민호
 
   try {
     // 이메일을 사용하여 데이터베이스에서 사용자를 찾습니다.
     connection.query("SELECT * FROM user WHERE email = ?", [email], async (err, result) => {
-      if (err) {
-        console.error("서버에서 에러 발생:", err);
+      if (error) {
+        console.error("서버에서 에러 발생:", error);
         res.status(500).send({ success: false, message: "서버 에러 발생" });
       } else {
         if (result.length > 0) {
@@ -728,7 +720,6 @@ app.post("/login", async (req, res) => {
             //세션데이터 저장(새로운 데이터 추가시 이부분 수정)
             req.session.usertype = result[0].usertype; //0213 김민호 익스플로우 세션기능 추가
             req.session.userid = result[0].userid; //0213 김민호 익스플로우 세션기능 추가
-            // console.log(req.session);
             res.send({ success: true, message: "로그인 성공", data: result });
           } else {
             res.send({
@@ -782,8 +773,8 @@ app.post("/checkuniquenumber", (req, res) => {
   // 데이터베이스에서 이메일이 이미 존재하는지 확인합니다.
   const sql = "SELECT * FROM user WHERE uniquenumber = ?";
   connection.query(sql, [uniquenumber], (err, result) => {
-    if (err) {
-      console.error("MySQL에서 고유번호 중복 확인 중 오류:", err);
+    if (error) {
+      console.error("MySQL에서 고유번호 중복 확인 중 오류:", error);
       return res.status(500).json({
         success: false,
         message: "고유번호 중복 확인 중 오류가 발생했습니다.",
@@ -814,8 +805,8 @@ app.post("/checkbusinessnumber", (req, res) => {
   // 데이터베이스에서 이메일이 이미 존재하는지 확인합니다.
   const sql = "SELECT * FROM user WHERE businessnumber = ?";
   connection.query(sql, [businessnumber], (err, result) => {
-    if (err) {
-      console.error("MySQL에서 사업자번호 중복 확인 중 오류:", err);
+    if (error) {
+      console.error("MySQL에서 사업자번호 중복 확인 중 오류:", error);
       return res.status(500).json({
         success: false,
         message: "사업자 중복 확인 중 오류가 발생했습니다.",
@@ -846,8 +837,8 @@ app.post("/checkEmailDuplication", (req, res) => {
   // 데이터베이스에서 이메일이 이미 존재하는지 확인합니다.
   const sql = "SELECT * FROM user WHERE email = ?";
   connection.query(sql, [email], (err, result) => {
-    if (err) {
-      console.error("MySQL에서 이메일 중복 확인 중 오류:", err);
+    if (error) {
+      console.error("MySQL에서 이메일 중복 확인 중 오류:", error);
       return res.status(500).json({
         success: false,
         message: "이메일 중복 확인 중 오류가 발생했습니다.",
@@ -894,9 +885,9 @@ app.post("/register", async (req, res) => {
     // MySQL 쿼리를 작성하여 회원 정보를 데이터베이스에 삽입합니다.
     const sql = "INSERT INTO user (userid, username, email, password, address, detailedaddress, phonenumber, usertype, businessnumber, uniquenumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     connection.query(sql, [userid, username, email, hashedPassword, address, detailedaddress, phonenumber, serverUsertype, businessnumber, uniquenumber], (err, result) => {
-      if (err) {
+      if (error) {
         // 쿼리 실행 중 에러가 발생한 경우 에러를 처리합니다.
-        console.error("MySQL에 데이터 삽입 중 오류:", err);
+        console.error("MySQL에 데이터 삽입 중 오류:", error);
         return res.status(500).json({
           success: false,
           message: "회원가입 중 오류가 발생했습니다.",
@@ -904,7 +895,6 @@ app.post("/register", async (req, res) => {
         });
       }
       // 회원가입이 성공한 경우 응답을 클라이언트에게 보냅니다.
-      // console.log("사용자가 성공적으로 등록됨");
       return res.status(200).json({
         success: true,
         message: "사용자가 성공적으로 등록됨",
@@ -912,7 +902,6 @@ app.post("/register", async (req, res) => {
       });
     });
   } catch (error) {
-    // 회원가입 중 다른 내부적인 오류가 발생한 경우 에러를 처리합니다.
     console.error("회원가입 중 오류:", error);
     return res.status(500).json({
       success: false,
@@ -926,10 +915,6 @@ app.post("/register", async (req, res) => {
 app.get("/edit-profile/:userId/:usertype", (req, res) => {
   // 클라이언트에서 파라미터로 전달 받은값 반영
   const { userId, usertype } = req.params; // userId, usertype 값 획득
-  // const usertype = req.session.usertype;
-  // const userid = req.session.userData[0].userid;
-  // console.log(req.session);
-  // console.log(req.session.userData.userid);
 
   if (!usertype || !userId) {
     return res.status(401).json({ success: false, message: "로그인되어 있지 않습니다." });
@@ -937,8 +922,8 @@ app.get("/edit-profile/:userId/:usertype", (req, res) => {
 
   const sql = "SELECT * FROM user WHERE userid = ?";
   connection.query(sql, [userId], (err, result) => {
-    if (err) {
-      console.error("사용자 정보 조회 중 오류:", err);
+    if (error) {
+      console.error("사용자 정보 조회 중 오류:", error);
       return res.status(500).json({ success: false, message: "사용자 정보 조회 중 오류가 발생했습니다." });
     }
 
@@ -966,8 +951,6 @@ app.delete("/delete-account/:userId/:userType", (req, res) => {
       console.error("주문 테이블 업데이트 오류:", updateError);
       res.status(500).json({ success: false, message: "주문 테이블 업데이트 오류" });
     } else {
-      // console.log("주문 테이블이 성공적으로 업데이트되었습니다");
-
       // 사용자 테이블에서 사용자를 삭제합니다.
       const deleteQuery = `DELETE FROM ${tableName} WHERE userid = ?`;
 
@@ -976,7 +959,6 @@ app.delete("/delete-account/:userId/:userType", (req, res) => {
           console.error("사용자 삭제 오류:", error);
           res.status(500).json({ success: false, message: "사용자 삭제 오류" });
         } else {
-          // console.log("사용자가 성공적으로 삭제되었습니다");
 
           if (tableName === "user") {
             const deleteCommentsQuery = `DELETE FROM campaign_comments WHERE userid = ?`;
@@ -1007,8 +989,8 @@ app.post("/find", (req, res) => {
 
   // 쿼리 실행
   connection.query(sql, [username, phonenumber], (err, result) => {
-    if (err) {
-      console.error("사용자 검색 오류:", err);
+    if (error) {
+      console.error("사용자 검색 오류:", error);
       res.status(500).json({ error: "사용자 검색 중 오류가 발생했습니다." });
     } else {
       if (result.length > 0) {
