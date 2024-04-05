@@ -32,8 +32,8 @@ const getSlice = createSlice({
   initialState: {
     results: {list: []}, // results : post의 데이터를 받는 프로퍼티
   },
-  reducers: {}, // 비동기 작업을 위한 포스팅이기 때문에 아무런 Reducer를 등록하지 않았다
-  // extraReducer에 비동기 함수의 pending, fulfilled, rejected를 처리할 내용을 넣어준다
+  reducers: {}, // 비동기 작업을 위한 포스팅이기 때문에 아무런 Reducer를 등록하지 않음
+  // extraReducer에 비동기 함수의 pending, fulfilled, rejected를 처리할 내용을 넣어줌
   extraReducers: (builder)=>{
     builder
       .addCase(getPost.pending, (state)=>{
@@ -46,7 +46,7 @@ const getSlice = createSlice({
       .addCase(getPost.rejected, (state, action) => {
         state.status = "Fail";
       })
-      // 새로 추가한 Thunk 함수의 상태 처리를 추가합니다.
+      // 새로 추가한 Thunk 함수의 상태 처리를 추가
       .addCase(getCommentsUrl.pending, (state) => {
         state.status = "Loading...";
       })

@@ -103,8 +103,8 @@ function CarbonFootprint() {
   };
 
   const handleResultSubmit = (newResultData, inputData, isTransportationOption) => {
-    // 사용자가 데이터를 제출하면, 이를 userData에 반영하여 바로 "결과보기" 탭에서 사용할 수 있도록 합니다.
-    // 이는 서버로부터 받은 userData가 있더라도, 사용자의 최신 제출을 반영하는 것을 우선합니다.
+    // 사용자가 데이터를 제출하면, 이를 userData에 반영하여 바로 "결과보기" 탭에서 사용할 수 있도록 함
+    // 이는 서버로부터 받은 userData가 있더라도, 사용자의 최신 제출을 반영하는 것을 우선
     setUserData({
       ...userEmissionData,
       ...newResultData,
