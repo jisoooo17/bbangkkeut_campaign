@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 function Consumption({ inputData, initialData, onResultSubmit }) {
-  // console.log("계산공식 :", initialData);
   const [inputValue, setInputValue] = useState(inputData); // 예시 입력 값
   const [co2Emission, setCo2Emission] = useState({
     electricity: 0,
@@ -111,7 +110,6 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
   // 입력값 계산 로직
   useEffect(() => {
     const handleData = inputValue;
-    // console.log("userInputValue :",inputValue);
 
     const getCostFormula = (costObj, key) => Object.values(costObj)[key] ?? "0";
 
