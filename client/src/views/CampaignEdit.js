@@ -104,8 +104,8 @@ const CampaignEdit = () => {
       try {
         await axios.put(`http://localhost:8000/campaign/edit/${id}`, write);
         navigate(-1);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     }
   };

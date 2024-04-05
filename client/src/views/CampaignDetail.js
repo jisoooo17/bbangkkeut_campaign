@@ -70,8 +70,8 @@ const CampaignDetail = (props) => {
       try {
         await axios.delete(`http://localhost:8000/campaign/detail/${id}`);
         navigate(-1);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     }
   };

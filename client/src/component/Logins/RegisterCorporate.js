@@ -28,7 +28,6 @@ function RegisterCorporate() {
 // 이메일 유효성 검사 02/14 김민호
 const handleEmailDuplicationCheck = async(event) => {
   event.preventDefault();
-  console.log("이메일 중복 확인 시작");
 
   if (!email) {
     alert('이메일을 입력해주세요!');
@@ -55,8 +54,6 @@ const handleEmailDuplicationCheck = async(event) => {
   
 const handlebusinessnumberCheck = async(event) => {
   event.preventDefault();
-  console.log("사업자 중복 확인 시작");
-
   if (!businessnumber) {
     alert('사업자을 입력해주세요!');
     return;
@@ -66,7 +63,6 @@ const handlebusinessnumberCheck = async(event) => {
   // 클라이언트가 서버에 사업자 중복 확인을 요청합니다./0214 김민호
   try{
     const response = await axios.post('http://localhost:8000/checkbusinessnumber', { businessnumber })
-      console.log('서버 응답:', response.data);
       alert(response.data.message);
       setbusinessnumberDuplication(response.data.success);
       
@@ -83,8 +79,6 @@ const handlebusinessnumberCheck = async(event) => {
 
   const handleRegesterClick = (event) => {
     event.preventDefault();
-    console.log("회원가입 시작");
-
 
     if (!username || !email || !password || !confirmPassword || !address) {
       alert('정보를 모두 입력해주세요!');

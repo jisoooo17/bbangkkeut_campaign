@@ -5,10 +5,10 @@
     },
   
     selectAddress: (data) => {
-      console.log(`
-            주소: ${data.address},
-            우편번호: ${data.zonecode}
-        `);
+      // console.log(`
+      //       주소: ${data.address},
+      //       우편번호: ${data.zonecode}
+      //   `);
       setAddress(data.address);
       setOpenPostcode(false);
     },
