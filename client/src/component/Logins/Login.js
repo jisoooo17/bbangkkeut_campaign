@@ -18,9 +18,6 @@ function LoginPage() {
   const [activeTab, setActiveTab] = useState("personalCheckbox");
 
   const LoginPageJs = () => {
-    //스크립트 동작시 콘솔에 출력
-    // console.log('LoginPageJs 함수 호출됨');
-
     // 로그인 요청 구현
     axios
       .post("http://localhost:8000/login", {
@@ -29,7 +26,6 @@ function LoginPage() {
         usertype: userTypes,
       }) //회원 정보 email, password, usertype의 정보를 가져옴
       .then((response) => {
-        console.log("서버 응답:", response);
         if (response.data.success) {
           const { usertype, userid, username } = response.data.data[0]; //0213 김민호 익스플로우세션
           const userData = {
@@ -46,7 +42,6 @@ function LoginPage() {
           window.location.reload(); //0210 상호형 추가 페이지를강제로 리로드
         } else {
           // 로그인 실패 시 처리
-          console.log("로그인 실패:", response.data);
           setloginStatus("로그인 실패: " + response.data.message);
         }
       });

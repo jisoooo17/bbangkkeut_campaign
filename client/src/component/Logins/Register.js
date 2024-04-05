@@ -17,11 +17,9 @@ function Register() {
 
   useEffect(() => {
     setIsPage(location.pathname);
-    // console.log("page", isPage);
     if (isPage === "/Login") {
       setHandlePage(true);
     }
-    // console.log("handlePage", handlePage);
   });
 
   const addClass = () => {

@@ -29,7 +29,6 @@ const Example = () => {
         const response = await fetch(`http://localhost:8000/api/carbonFootprint/main`);
         const data = await response.json();
         setMainInitialData(data); // 초기 데이터 상태 업데이트
-        // console.log(data);
       } catch (error) {
         console.error("Error fetching initial data:", error);
       }
@@ -196,7 +195,6 @@ const Example = () => {
 
     return null;
   };
-  // console.log(sessionStorage.length);
   const carbonNavigate = () => {
     if (isLoggedin === 0) {
       alert("로그인이 필요한 서비스입니다.");
