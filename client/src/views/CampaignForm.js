@@ -81,8 +81,8 @@ const CampaignForm = () => {
           await axios.post(`http://localhost:8000/campaign/form/${id}`, submitData);
           alert("신청이 완료되었습니다.");
           navigate(-1);
-        } catch (err) {
-          console.log(err);
+        } catch (error) {
+          console.log(error);
         }
       }
     }

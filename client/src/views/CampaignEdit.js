@@ -123,7 +123,6 @@ const CampaignEdit = () => {
 
   const onChangeRadio = (e) => {
     setSelOpt(e.target.value);
-    console.log(e.target.value);
   };
 
   const renderAddrDiv = () => {

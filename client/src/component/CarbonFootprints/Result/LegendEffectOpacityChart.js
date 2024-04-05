@@ -165,14 +165,14 @@ const Example = () => {
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
-      // payload[0]는 현재 호버링되고 있는 데이터 포인트의 정보를 담고 있습니다.
-      const data = payload[0].payload; // 툴팁에 표시될 전체 데이터 객체를 가져옵니다.
+      // payload[0]는 현재 호버링되고 있는 데이터 포인트의 정보를 담고 있음
+      const data = payload[0].payload; // 툴팁에 표시될 전체 데이터 객체를 가져옴
 
-      // 데이터 객체에서 name, average, user 값을 추출합니다.
+      // 데이터 객체에서 name, average, user 값을 추출
       const { name, average, user } = data;
 
-      // 색상은 name을 키로 사용하여 colors 객체에서 동적으로 결정합니다.
-      const color = colors[name] || "#000"; // 기본값으로 검정색을 설정합니다.
+      // 색상은 name을 키로 사용하여 colors 객체에서 동적으로 결정
+      const color = colors[name] || "#000"; // 기본값으로 검정색을 설정
 
       return (
         <div

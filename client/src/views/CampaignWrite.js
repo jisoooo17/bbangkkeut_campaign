@@ -28,7 +28,6 @@ const CampaignWrite = () => {
   const [selOpt, setSelOpt] = useState("오프라인");
   const onChangeRadio = (e) => {
     setSelOpt(e.target.value);
-    console.log(e.target.value);
   };
 
   const renderAddrDiv = () => {
@@ -119,8 +118,8 @@ const CampaignWrite = () => {
       try {
         await axios.post("http://localhost:8000/campaign", postData);
         navigate(-1);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     }
   };

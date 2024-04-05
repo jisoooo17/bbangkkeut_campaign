@@ -60,7 +60,7 @@ const handlebusinessnumberCheck = async(event) => {
   }
   
 
-  // 클라이언트가 서버에 사업자 중복 확인을 요청합니다./0214 김민호
+  // 클라이언트가 서버에 사업자 중복 확인을 요청
   try{
     const response = await axios.post('http://localhost:8000/checkbusinessnumber', { businessnumber })
       alert(response.data.message);
@@ -84,8 +84,7 @@ const handlebusinessnumberCheck = async(event) => {
       alert('정보를 모두 입력해주세요!');
       return;
     }
-    // 이메일이 중복되었는지 확인합니다.
-    // 이메일 유효성 검사 02/14 김민호
+    
     if (!IsDuplicateChecked) {
       alert('이미 등록된 이메일이거나 이메일 중복 확인을 해주세요.');
       return;

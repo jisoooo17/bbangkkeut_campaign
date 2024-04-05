@@ -33,7 +33,7 @@ function Mypage() {
           setCampaignList(arrPost.reverse());
         }
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   }, []);
 
   // 신청한 캠페인 목록 불러옴

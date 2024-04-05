@@ -15,7 +15,7 @@ const WriteEditor = ({ value, handleChangeQuill }) => {
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.click(); // 에디터 이미지버튼을 클릭하면 이 input이 클릭됨
-    // input이 클릭되면 파일 선택창이 나타난다.
+    // input이 클릭되면 파일 선택창이 나타남
 
     // input에 변화가 생긴다면 = 이미지를 선택
     input.addEventListener('change', async () => {

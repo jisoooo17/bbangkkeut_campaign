@@ -11,16 +11,8 @@ import Footer from "../component/Footer";
 import html2canvas from "html2canvas";
 
 function CarbonFootprint() {
-  // const userId = 179870; //개발용 user_id
   const storedUserData = sessionStorage.getItem("userData");
   const userData = JSON.parse(storedUserData);
-  // console.log("세션확인:", userData);
-
-  // const userData = {
-  //   userid: 179870,
-  //   username: "상호형",
-  //   usertype: "1",
-  // };
 
   const currentDate = new Date().toISOString().slice(0, 10); // 현재 날짜를 'YYYY-MM-DD' 형식으로
 
@@ -28,7 +20,6 @@ function CarbonFootprint() {
   const [userEmissionData, setUserData] = useState(null);
   const [newResultData, setNewResultData] = useState(null);
   const [initialData, setInitialData] = useState(null); // 초기 데이터 상태 추가
-  // console.log("initialData :", initialData);
   const [isTransportationOption, setIsTransportationOption] = useState(null);
   const [consumptionData, setConsumptionData] = useState({
     electricity: "",
@@ -56,7 +47,6 @@ function CarbonFootprint() {
         if (data.hasData) {
           setNewResultData(data.data);
           setActiveTab("result");
-          // console.log(data.data);
         } else {
           fetchInitialData();
           setActiveTab("consumption");
@@ -71,7 +61,6 @@ function CarbonFootprint() {
         const response = await fetch(`http://localhost:8000/api/carbonFootprint`);
         const data = await response.json();
         setInitialData(data); // 초기 데이터 상태 업데이트
-        // console.log(data);
       } catch (error) {
         console.error("Error fetching initial data:", error);
       }

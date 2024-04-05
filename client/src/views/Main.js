@@ -53,7 +53,7 @@ const Main = () => {
           setCampaignList(arrPost.reverse());
         }
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {

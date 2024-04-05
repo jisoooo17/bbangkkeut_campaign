@@ -73,7 +73,6 @@ const Header = () => {
     const navigateWithLoginCheck = (path) => {
       if (!loggedIn) {
         alert("로그인이 필요한 서비스입니다.");
-        // 로그인 페이지로 이동하거나, 현재 페이지에 머물게 할 수 있습니다.
         navigate('/Login'); // 로그인 페이지로 바로 이동하는 경우
       } else {
         navigate(path);

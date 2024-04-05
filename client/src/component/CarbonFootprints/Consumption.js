@@ -52,8 +52,8 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
 
   // Result Data전달
   const handleSubmit = () => {
-    // `transportation`이 4항목 (예: "추가 옵션") 선택된 경우를 처리합니다.
-    const isTransportationOption = inputValue.radioOption === "3"; // 여기서는 "3"이 4번째 옵션을 의미합니다.
+    // `transportation`이 4항목 (예: "추가 옵션") 선택된 경우를 처리
+    const isTransportationOption = inputValue.radioOption === "3"; // 여기서는 "3"이 4번째 옵션을 의미
 
     // `transportation` 제외한 나머지 값들의 유효성 검사
     const isValidEmissionExcludingTransportation = Object.entries(co2Emission).every(([key, value]) => {
@@ -191,7 +191,7 @@ function Consumption({ inputData, initialData, onResultSubmit }) {
                       <p>승용차 종류</p>
                     </div>
                     <div className="radioBox">
-                      {/* 이 div가 모든 라디오 버튼들을 감싸는 컨테이너 역할을 합니다. */}
+                      {/* 이 div가 모든 라디오 버튼들을 감싸는 컨테이너 역할 */}
                       {transportationOptions.map((option, idx) => (
                         <div key={option.id}>
                           <input
