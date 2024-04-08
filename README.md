@@ -23,6 +23,7 @@
 
 ### 사용 기술
 ![stack](https://github.com/jisoooo17/readme_img/blob/main/bbangkkeut_campaign/tech-stack.png)
+![stack](https://github.com/jisoooo17/readme_img/blob/main/bbangkkeut_campaign/tech-stack2.png)
 
 * React를 활용한 UI 개발
 * Node.js를 통한 서버 사이드 애플리케이션 개발
