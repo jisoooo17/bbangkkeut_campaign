@@ -29,6 +29,9 @@
 * JavaScript와 CSS를 사용한 인터랙션 효과 및 스타일링 작업
 * Axios를 활용한 HTTP 요청 처리
 * MySQL 서버를 활용한 데이터 전송 및 관리
+
+
+<br>
 ![stack](https://github.com/jisoooo17/readme_img/blob/main/bbangkkeut_campaign/tech-stack2.png)
 --- 
 
