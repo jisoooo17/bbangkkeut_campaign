@@ -73,7 +73,7 @@ app.get("/campaign", (req, res) => {
   // const q = `SELECT a.*, u.*
   // FROM campaign_posts a
   // INNER JOIN user u ON a.userid = u.userid;`;
-  connection.query(q, (err, data) => {
+  connection.query(q, (error, data) => {
     if (error) {
       console.error(error);
       return res.json(error);
@@ -473,7 +473,7 @@ app.get("/api/carbonFootprint/check/:userId/:date", async (req, res) => {
 app.get("/api/carbonFootprint/main", async (req, res) => {
   try {
     const query = `SELECT * FROM user_calculation;`
-    connection.query(query,(err, results) =>{
+    connection.query(query,(error, results) =>{
       if (error) reject(error);
       else return res.json(results);
     });
