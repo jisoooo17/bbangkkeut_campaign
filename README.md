@@ -31,7 +31,8 @@
 * MySQL 서버를 활용한 데이터 전송 및 관리
 
 
-<br>
+
+
 ![stack](https://github.com/jisoooo17/readme_img/blob/main/bbangkkeut_campaign/tech-stack2.png)
 --- 
 
