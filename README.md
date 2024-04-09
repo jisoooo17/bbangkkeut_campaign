@@ -146,4 +146,3 @@
 #### 🌱 마이페이지
 ![mypage](https://github.com/jisoooo17/readme_img/blob/main/bbangkkeut_campaign/mypage.gif)
 
-# campaign_bbangkkeut
