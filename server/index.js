@@ -751,7 +751,6 @@ async function generateUserid(usertype) {
     organization: 3,
   }[usertype];
 
-  // 0219 추가_상호형
   let randomDigits;
   let userid;
 

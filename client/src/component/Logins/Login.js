@@ -34,8 +34,8 @@ function LoginPage() {
             usertype: usertype,
           };
           sessionStorage.setItem("loggedIn", true);
-          sessionStorage.setItem("userData", JSON.stringify(userData)); // 0210 상호형 추가 세션에 userNumber,username추가
-          sessionStorage.setItem("usertype", usertype); //익스플로우 세션 데이터 추가 0213 김민호
+          sessionStorage.setItem("userData", JSON.stringify(userData)); 
+          sessionStorage.setItem("usertype", usertype);
           //Application에 세션스토리지 안에서 정보를 출력한다
 
           navigate("/");
