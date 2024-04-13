@@ -27,7 +27,7 @@ function LoginPage() {
       }) //회원 정보 email, password, usertype의 정보를 가져옴
       .then((response) => {
         if (response.data.success) {
-          const { usertype, userid, username } = response.data.data[0]; //0213 김민호 익스플로우세션
+          const { usertype, userid, username } = response.data.data[0]; 
           const userData = {
             userid: userid,
             username: username,
