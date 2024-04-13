@@ -9,8 +9,8 @@ import multer from "multer"; // 이미지 저장 관련
 import path, { resolve } from "path"; // 이미지 저장 관련
 
 import bcrypt from "bcrypt";
-import session from "express-session"; //0213 김민호 세션 추가
-import MemoryStore from "memorystore"; // MemoryStore import 추가
+import session from "express-session"; 
+import MemoryStore from "memorystore"; 
 const MemoryStoreInstance = MemoryStore(session);
 
 import { fileURLToPath } from "url";
@@ -38,12 +38,6 @@ app.use(cors({ origin: "http://localhost:3000" }));
 //   // password: "1234",
 //   // database: "ezteam2",
 //   // port: 5005,
-// });
-// const db = mysql.createConnection({
-//   host: "127.0.0.1",
-//   database: "campaign", // 추후 수정
-//   user: "root",
-//   password: "ekdrmsdl3", 
 // });
 
 const connection = mysql.createConnection({
@@ -707,7 +701,7 @@ app.use(
 //-------------------------------로그인------------------------------------
 
 app.post("/login", async (req, res) => {
-  const { email, password, usertype } = req.body; //usertype 추가 2/14 김민호
+  const { email, password, usertype } = req.body; 
 
   try {
     // 이메일을 사용하여 데이터베이스에서 사용자를 찾습니다.
@@ -719,13 +713,12 @@ app.post("/login", async (req, res) => {
         if (result.length > 0) {
           const isPasswordMatch = await bcrypt.compare(password, result[0].password);
           if (isPasswordMatch && usertype == result[0].usertype) {
-            // 0213 김민호 세션스토리 초기화 확인
             if (!req.session) {
               req.session = {};
             }
             //세션데이터 저장(새로운 데이터 추가시 이부분 수정)
-            req.session.usertype = result[0].usertype; //0213 김민호 익스플로우 세션기능 추가
-            req.session.userid = result[0].userid; //0213 김민호 익스플로우 세션기능 추가
+            req.session.usertype = result[0].usertype; 
+            req.session.userid = result[0].userid; 
             res.send({ success: true, message: "로그인 성공", data: result });
           } else {
             res.send({
