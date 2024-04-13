@@ -46,7 +46,6 @@ function LoginPage() {
         }
       });
   };
-  // 0304 수정 작성 : 상호형
   const checkTapValues = [
     { label: "개인", tabname: "personalCheckbox" },
     { label: "기업", tabname: "businessCheckbox" },

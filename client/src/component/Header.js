@@ -16,10 +16,10 @@ const Header = () => {
     // 로그아웃 시 세션 스토리지에서 로그인 상태 제거
     const handleLogout = () => {
       sessionStorage.removeItem("loggedIn");
-      sessionStorage.removeItem("userData"); //0210 상호형 추가
-      sessionStorage.removeItem("usertype"); //0303 상호형 추가
+      sessionStorage.removeItem("userData"); 
+      sessionStorage.removeItem("usertype"); 
       setLoggedIn(false);
-      navigate("/"); //0210 상호형 추가
+      navigate("/"); 
     };
 
     // 헤더 스크롤 모션
@@ -50,7 +50,6 @@ const Header = () => {
           }
         }
 
-        // 적용예정 0306 상호형 추가
         // 스크롤 위치가 1500 이상일 때 'carbon-text-color' 클래스 추가
         
         // if (isScrollTop >= carbonHeaderTextColor) {
