@@ -39,13 +39,19 @@ app.use(cors({ origin: "http://localhost:3000" }));
 //   // database: "ezteam2",
 //   // port: 5005,
 // });
+// const db = mysql.createConnection({
+//   host: "127.0.0.1",
+//   database: "campaign", // 추후 수정
+//   user: "root",
+//   password: "ekdrmsdl3", 
+// });
 
 const connection = mysql.createConnection({
-  host: "192.168.0.34",
+  host: "127.0.0.1",
   user: "bbangkkeut",
   password: "1234",
   database: "bbangkkeut",
-  database: "ezteam2",
+  // database: "ezteam2",
   port: 3306,
 });
 
