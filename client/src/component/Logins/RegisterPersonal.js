@@ -16,14 +16,12 @@ function RegisterPersonal() {
   const [phonenumber, setphonenumber] = useState('');
   const [emailDuplication, setEmailDuplication] = useState(true);
   const [IsDuplicateChecked, setIsDuplicateChecked] = useState(false);
-  // 이메일 유효성 검사 02/14 김민호
   const handle = handlePostcode(openPostcode, setOpenPostcode, setAddress);
 
   const setPasswordMatch = (match) => {
     // setPasswordMatch(true) 또는 setPasswordMatch(false) 등으로 사용
   };
   
-  // 이메일 유효성 검사 02/14 김민호
   const handleEmailDuplicationCheck = async (event) => {
     event.preventDefault();
     if (!email) {

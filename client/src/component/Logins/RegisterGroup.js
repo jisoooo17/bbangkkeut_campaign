@@ -19,13 +19,11 @@ function RegisterGroup() {
   const [IsuniquenumberDuplication, setIsuniquenumberDuplication] = useState(true);//고유번호 유효성
   const [emailDuplication, setEmailDuplication] = useState(true);//이메일 유효성
   const [IsDuplicateChecked, setIsDuplicateChecked] = useState(false);
-  // 이메일 유효성 검사 02/14 김민호
   const handle = handlePostcode(openPostcode, setOpenPostcode, setAddress);
 
   const setPasswordMatch = (match) => {
     // setPasswordMatch(true) 또는 setPasswordMatch(false) 등으로 사용
   };
-// 이메일 유효성 검사 02/14 김민호
 const handleEmailDuplicationCheck = async(event) => {
   event.preventDefault();
   if (!email) {
@@ -207,7 +205,6 @@ axios.post('http://localhost:8000/register', {
                   <button 
                   className="btn-check"
                   onClick={handleuniquenumberCheck}>확인</button>
-                  {/* 고유 유효성 검사 02/20 김민호 */}
                 </div>
               </div>
               <div className="form-input">
@@ -223,7 +220,6 @@ axios.post('http://localhost:8000/register', {
                   className="btn-check"
                   onClick={handleEmailDuplicationCheck}>확인</button>
                   {/* handleEmailDuplicationCheck 함수가 호출해서 이메일 중복확인 작업을 진행하고, 중복방지를 해주는 코드 */}
-                  {/* 이메일 유효성 검사 02/14 김민호 */}
                 </div>
               </div>
               <div className="form-input">
