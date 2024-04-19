@@ -60,6 +60,7 @@ connection.connect((error) => {
 
 app.get("/", (req, res) => res.send(`Hell'o World!`));
 
+
 // ------------------- 김지수 -------------------
 // 정적 파일 제공을 위한 미들웨어 추가
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
