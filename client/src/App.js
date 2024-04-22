@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-// import { useState, useEffect } from "react";
 import Main from "./views/Main";
 import Campaign from "./views/Campaign";
 import CampaignWrite from "./views/CampaignWrite";

@@ -765,7 +765,7 @@ async function generateUserid(usertype) {
   return userid;
 }
 
-//-------------------------------단체고유번호 중복 체크 2/14 김민호---------------------------------
+//-------------------------------단체고유번호 중복 체크 김민호---------------------------------
 app.post("/checkuniquenumber", (req, res) => {
   const { uniquenumber } = req.body;
 
@@ -797,7 +797,7 @@ app.post("/checkuniquenumber", (req, res) => {
   });
 });
 
-//-------------------------------사업자 중복 체크 2/14 김민호---------------------------------
+//-------------------------------사업자 중복 체크 김민호---------------------------------
 app.post("/checkbusinessnumber", (req, res) => {
   const { businessnumber } = req.body;
 
@@ -829,7 +829,7 @@ app.post("/checkbusinessnumber", (req, res) => {
   });
 });
 
-//-------------------------------이메일 중복 체크 2/14 김민호---------------------------------
+//-------------------------------이메일 중복 체크 김민호---------------------------------
 app.post("/checkEmailDuplication", (req, res) => {
   const { email } = req.body;
 
